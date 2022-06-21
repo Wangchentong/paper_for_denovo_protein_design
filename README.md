@@ -10,6 +10,7 @@ ths repo is not highly recommended for the latest progress in denovo design but 
 - [List of papers about Proteins Design](#paper_for_denovo_protein_design)
   - [About this repository](#about-this-repository)
   - [1. Reviews](#1-reviews)
+  - [2. Scaffold generation](#2-scaffold-generation)
 
 ## 1. Reviews
 
@@ -24,3 +25,11 @@ intro: ***author give a brief intro to denovo design, including physical princip
 Xingjie Pan & Tanja Kortemme   [JBC Review](https://www.sciencedirect.com/science/article/pii/S0021925821003367) || 2021
 
 intro: ***this paper gives a systematic introduction to diffrent subfield or pipeline of denovo protein design: backbone generation,sequence design,scoring function. Also introduce different ways denovo protein perform function like binding ligand,self assemble,membrane proteins and dynamic proteins, more close to the mainstream research direction***  
+
+## 2. Scaffold generation 
+
+### 2.1 **Sampling of Structure and Sequence Space of Small Protein Folds**
+
+Linsky T*, Noble K* & Baker D, Strauch EM [bioarxiv](https://www.biorxiv.org/content/10.1101/2021.03.10.434454v1) || 2021
+
+intro: ***a convenient tool for scaffold generation of specific topology, you only need to define the length variance and ss type with connection way, a great step to avoid define blueprint for each length and each abego to enumarately explore parameter space. Dynamic parameter sampling and sequential segment folding makes it more efficient than blueprint. There's some similarity between FoldArchitect(this paper) and topobuilder. Latter can accomodate motifs by using Funfoldes Mover, but former seems more intelligent when it comes to scaffold generation. very helpful if you need generate some simple topology scaffold(leave more complex one to deep learning method). blueprint and FoldArchitect,Topobuilder,rosetta remodel, i guess this is all you need for scaffold generation.***
