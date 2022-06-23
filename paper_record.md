@@ -13,9 +13,18 @@ idea: ***pretraning evoformer at uniref like msa transfomer may be more properly
 Zuobai Zhang & Jian Tang [arxiv](https://arxiv.org/abs/2203.06125) | 2022
 
 intro: ***great paper. bring contrastive learning to protein graph representation,which shows to be a more useful pretraning task than mask for graph. another interesting try is multiedgetype node update method(Relational graph convolutional layer), a meaningful improvements from knn and radius-based neighbour node. thers's some difference on node update of gcn used in this and mpnn,update node by concat (node,edge,edge-twoward-node) or update node by add (updated-node-by-neighbour-ndoe and fc(edge)，oops, inital edge contains both node and distance feature) which edge is updated by neighbour edge.anymway,there's lots of ways to update node and edge,update edge by edge and node,update node by edge and node,update edge by edge,update node by node, need think and test more about combination.***  
-idea: ***pretraning by graph contrastive learning, split and update edge feature by diifferent type(knn,radius-based,sequential-based) and brings a lot paper abour structure representation tips:update edge by edge might work better than update edge by node. brings full atom distance feature will absolutely give a improvement***   
+idea: ***pretraning by graph contrastive learning, split and update edge feature by diifferent type(knn,radius-based,sequential-based) and brings a lot paper abour structure representation tips:update edge by edge might work better than update edge by node. brings full atom distance feature will absolutely give a improvement***
 
+### **Multi-Scale Representation Learning on Proteins**
+  
+Vignesh Ram Somnath*, Charlotte Bunne* & Andreas Krause [NeurIPS](https://openreview.net/forum?id=-xEk43f_EO6) | 2021 [Code](https://github.com/vsomnath/holoprot)
+  
+intro: ***two-scale protein representation of protein, surface feature(vertices or superpixel) and structure feature, reduce surface vertices by combine them into k for each node and take out (min,max,mean,std) to represent a node. then get mean for node belong to same residue to combine with node feature to get initial structural graph representation. show great performance on ligand binding affinity with surface feature alone(perform bad on enzyme classification which resonable). two task both benefit from mutiscale graph than single scale graph alone. but to notice that structure graph alone is always better than surface graph and mostly comparable with mutiscale graph, which makes me thought that structure feature is enough for represent surface info on a properly network? since it performs well on ligand binding task like surface graph. Still,encode surface feature get some improvement in this paper.
+  
+# Not very useful
 
+***Structure-aware Protein Self-supervised Learning***   
+intro: combine TransProt with GNN model to learn structure representation, not combine LM representation of seq in the initial node feature but at the end, to leverage seq info by a bi optimization step.More specificlly, create a gradient from gnn to LM to get a double loss, one from direct loss and one from LM which calculate by a liite param update by guidence of GNN. take a example, gnn tell LM to go for a way, and at next batch we see gnn's guidence is right or not, and update gnn's param from the delta theta(param change of LM). a liitle improvement(the benchmark seems not very promising) but a huge computation time up. simply update node by edge and node, again mutitype edge and all atom pair distance might work better. only predict distance(important) and dihedral angle(not very important), why not hide residue type? contrastive learning seems more desirable.   
 
 
 
