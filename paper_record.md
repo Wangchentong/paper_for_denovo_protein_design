@@ -20,7 +20,13 @@ idea: ***pretraning by graph contrastive learning, split and update edge feature
 Vignesh Ram Somnath*, Charlotte Bunne* & Andreas Krause [NeurIPS](https://openreview.net/forum?id=-xEk43f_EO6) | 2021 [Code](https://github.com/vsomnath/holoprot)
   
 intro: ***two-scale protein representation of protein, surface feature(vertices or superpixel) and structure feature, reduce surface vertices by combine them into k for each node and take out (min,max,mean,std) to represent a node. then get mean for node belong to same residue to combine with node feature to get initial structural graph representation. show great performance on ligand binding affinity with surface feature alone(perform bad on enzyme classification which resonable). two task both benefit from mutiscale graph than single scale graph alone. but to notice that structure graph alone is always better than surface graph and mostly comparable with mutiscale graph, which makes me thought that structure feature is enough for represent surface info on a properly network? since it performs well on ligand binding task like surface graph. Still,encode surface feature get some improvement in this paper.***   
-  
+
+### **Intrinsic-Extrinsic Convolution and Pooling for Learning on 3D Protein Structures**
+
+Pedro Hermosilla ... & Timo Ropinski [ICLR](https://openreview.net/forum?id=l0mSUROpwY) | 2021 [Code](https://github.com/phermosilla/IEConv_proteins)  
+
+intro : ***two major contribute: a new conv layer to aggregate neighbour node(low computation cost(fc(f_edge)*f_node),with edge of intrinsic(covalent bond,covalent bond + hydrogen bond) distance and extrinsic distance(elucidean distance)), pooling operator(not seems necessary on amino acid level) but herachichally reduce graph size to enable higher level representation(more hidden size with per node).*** pooling maybe benefit to protein level downstream task, conv layer seems too simple to handle complex far distance relationship. edge pool can get same result, check it out.  i believe conv with (elucidean distance,sequential distance) is enough to handel node relationship but only benchmark individually. encoding amino acid type with a embedding layer is better than encode directly by one hot? i guess both ok. second one can be visualized to test understand ability of network. also give some advice for other method's finetuning. Author give fair opinion about voxel-based method and GCNN-method, voxel-based:**why do need a new pool operator than just 3d conv on 3d grid?** unfortunately, grids donot scale well to fine structures or many atoms, and even more importantly, they do not consider the primary and secondary structure of proteins. GCNN approaches suffer from over-smoothing, i.e.,**indistinguishable node representations after stacking several layers**, which limits the maximum depthusable for such architectures.   
+
 # Not very useful
 
 ***Structure-aware Protein Self-supervised Learning***   
