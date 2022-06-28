@@ -29,6 +29,13 @@ intro : ***two major contribute: a new conv layer to aggregate neighbour node((f
 
 idea: ***A big question here ---- is it necessary to represent sidechain explicitly when doing representaion of structure or model can learn by itself? if not, bert-like task can be accomplished but lost the intial feature of chemichal bond, the tradeoff is pretty interesting, without this, there might be some ambiguity without this feature,do some ablation study***
 
+### **Pre-training Co-evolutionary Protein Representation via A Pairwise Masked Language Model**
+
+Liang He ... MRSA [Arxiv](https://arxiv.org/abs/2110.15527) | 2021  
+
+intro : a conceptual attempt that shows pair-wise residue mask token prediction can caputualte coevolution information than individual mask token prediction. From ituition that the **probobilty of two coevolved residue pair's amino acid type is not simple mutiplicate by two single prediction probability. maximize pair probability make model to capture coevolution of two mask residue.** Downstream task shows model improve performance on contact prediction about 10%, meanwhile no harm to ss prediction and improve alot on remote nomology detection of super family and family level. Author metioned that Uniref 50 dataset's generalization ablility is much better than Pfam to pretrain at about 10% for contact prediction task. At the disscusion, author think triple mask prediction might be helpful, but cubic tomputation cost, af2 shows hope for it.
+. 
+
 # Not very useful
 
 ***Structure-aware Protein Self-supervised Learning***   
